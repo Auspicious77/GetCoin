@@ -14,12 +14,12 @@ void main() async {
 }
 
 Future<void> loadConfig() async {
-  String _configContent =
+  String configContent =
       await rootBundle.loadString("assets/config/main.json");
-  Map _configData = jsonDecode(_configContent);
+  Map configData = jsonDecode(configContent);
   GetIt.instance.registerSingleton<AppConfig>(
     AppConfig(
-      COIN_API_BASE_URL: _configData["COIN_API_BASE_URL"],
+      COIN_API_BASE_URL: configData["COIN_API_BASE_URL"],
     ),
   );
 }
@@ -31,7 +31,7 @@ void registerHTTPService() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
